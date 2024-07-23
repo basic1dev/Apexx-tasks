@@ -29,8 +29,12 @@ Route::get('/contacts', function () {
 
 // For the form
 
+// Here the maginc methodods are used: the "with" along with the captalized variable name can be used.
 Route::get('/user-form', function () {
-    return view('user_form');
+    $title1 = "This is the first title";
+    $title2 = "This is the second title";
+
+    return view('user_form')->withTitle1("title1")->withTitle2("title2")->withTest("testing magic functions!");
 });
 
 
@@ -43,6 +47,6 @@ Route::post('/get-userdata', function(Request $request) {
     // return "The values are as follows; name: ".$name." email: ".$email." password: ".$password;
 
     // lets redirect
-    return redirect('user-form')->with('message', 'We obtained your info, Welcome to our community.');
+    return redirect('user-form')->with('obtained-message', 'We obtained your info, Welcome to our community.');
 
 });
