@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,36 +22,53 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('uri', action);
 
-Route::get('/', function () {
-    return view('home');
-});
 
 
-Route::get('/contacts', function () {
-    return view('first');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 
-// For the form
-
-// Here the maginc methodods are used: the "with" along with the captalized variable name can be used.
-Route::get('/user-form', function () {
-    $title1 = "This is the first title";
-    $title2 = "This is the second title";
-
-    return view('user_form')->withTitle1("title1")->withTitle2("title2")->withTest("testing magic functions!");
-});
+// Route::get('/contacts', function () {
+//     return view('first');
+// });
 
 
-Route::post('/get-userdata', function(Request $request) {
-    // dd($request->all());
-    $name = $request->input("name");
-    $email = $request->input("email");
-    $password = $request->input("password");
+// // For the form
 
-    // return "The values are as follows; name: ".$name." email: ".$email." password: ".$password;
+// // Here the maginc methodods are used: the "with" along with the captalized variable name can be used.
+// Route::get('/user-form', function () {
+//     $title1 = "This is the first title";
+//     $title2 = "This is the second title";
 
-    // lets redirect
-    return redirect('user-form')->with('obtained-message', 'We obtained your info, Welcome to our community.');
+//     return view('user_form')->withTitle1("title1")->withTitle2("title2")->withTest("testing magic functions!");
+// });
 
-});
+// Route::post('/get-userdata', function(Request $request) {
+//     // dd($request->all());
+//     $name = $request->input("name");
+//     $email = $request->input("email");
+//     $password = $request->input("password");
+
+//     // return "The values are as follows; name: ".$name." email: ".$email." password: ".$password;
+
+//     // lets redirect
+//     return redirect('user-form')->with('obtained-message', 'We obtained your info, Welcome to our community.');
+// });
+
+
+// For the resgiter
+Route::view('register', 'auth.register');
+Route::post('store', [RegisterController::class, 'store']);
+
+Route::view('home', 'home');
+
+
+// For the login
+
+Route::view('login', 'auth.login');
+Route::post('authenticate', [LoginController::class, 'authenticate']);
+
+// for logout
+
+Route::get('logout', [LoginController::class, 'logout']);

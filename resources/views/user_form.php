@@ -14,9 +14,9 @@
             <?=session('obtained-message')?><br>
 
 
-            <label>UserName: <input type="text" name="name"></label><br>
-            <label>Email: <input type="text" name="email"></label><br>
-            <label>password: <input type="password" name="password"></label><br>
+            <label>UserName: <input type="text" name="name"></label><br> <br>
+            <label>Email: <input type="text" name="email"></label><br> <br>
+            <label>password: <input type="password" name="password"></label><br> <br>
             <input type="hidden" name="_token" value="<?=csrf_token()?>">
             <input type="submit" value="send">
 
