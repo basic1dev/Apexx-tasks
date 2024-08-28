@@ -29,7 +29,8 @@ class ProductInsertController extends Controller
         $Quantity_per_pack = $request->input('Quantity_per_pack');
 
         DB::insert("insert into product(product_Name, model_number, product_details, How_to_use, Shipping_details, Prize, Weight, Quantity_per_pack) values(?, ?, ?, ?, ?, ?, ?, ?)", [$product_Name, $model_number, $product_details, $How_to_use, $Shipping_details, $Prize, $Weight, $Quantity_per_pack]);
-        return "Record inserted successfully";
+
+        return 'Record inserted successfully <a href="/view-records"> click here for product list </a>';
     }
 
 
@@ -53,5 +54,10 @@ class ProductInsertController extends Controller
 
 
         return 'record successfully updated<a href="/view-records"> click here for product list </a>';
+    }
+
+    public function delete($id){
+        DB::delete('delete from product where id=?', [$id]);
+        return 'record successfully Deleted:<a href="/view-records"> click here for product list </a>';
     }
 }

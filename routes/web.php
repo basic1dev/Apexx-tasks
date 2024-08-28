@@ -31,7 +31,14 @@ Route::get('view-records', [ProductInsertController::class,'product_list']);
 
 
 
-// to edit existing records
+// -------------- To edit existing records ------------
+
 
 Route::get('edit/{id}', [ProductInsertController::class,'edit']);
+
+// The post request sent by the edit form to the database to update
 Route::post('edit/{id}', [ProductInsertController::class,'update']);
+
+// To delete a query
+Route::get('delete/{id}', [ProductInsertController::class,'delete']);
+
