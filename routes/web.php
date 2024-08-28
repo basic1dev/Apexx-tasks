@@ -1,74 +1,30 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\causesController;
+use App\Http\Controllers\eventsController;
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\resourcesController;
+use App\Http\Controllers\ProductInsertController;
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
+// home,home form routes
+Route::get('/',[homeController::class,'index'])->name('home');
+Route::post('/',[homeController::class,'homeForm'])->name('homeForm');
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// events,events form routes
+Route::get('/events',[eventsController::class,'index'])->name('events');
+Route::post('/events',[eventsController::class,'eventsForm'])->name('eventsForm');
 
-// This is the normal route use
-
-// Route::get('uri', action);
+// causes,resources routes
+Route::get('/causes',[causesController::class,'index'])->name('causes');
+Route::get('/resources',[resourcesController::class,'index'])->name('resources');
 
 
 
-// Route::get('/', function () {
-//     return view('home');
-// });
 
+Route::get('/InProduct', [ProductInsertController::class,'insert_form'])->name('InProduct');
 
-// Route::get('/contacts', function () {
-//     return view('first');
-// });
+Route::post('create', [ProductInsertController::class,'insert']);
 
-
-// // For the form
-
-// // Here the maginc methodods are used: the "with" along with the captalized variable name can be used.
-// Route::get('/user-form', function () {
-//     $title1 = "This is the first title";
-//     $title2 = "This is the second title";
-
-//     return view('user_form')->withTitle1("title1")->withTitle2("title2")->withTest("testing magic functions!");
-// });
-
-// Route::post('/get-userdata', function(Request $request) {
-//     // dd($request->all());
-//     $name = $request->input("name");
-//     $email = $request->input("email");
-//     $password = $request->input("password");
-
-//     // return "The values are as follows; name: ".$name." email: ".$email." password: ".$password;
-
-//     // lets redirect
-//     return redirect('user-form')->with('obtained-message', 'We obtained your info, Welcome to our community.');
-// });
-
-
-// For the resgiter
-Route::view('register', 'auth.register');
-Route::post('store', [RegisterController::class, 'store']);
-
-Route::view('home', 'home');
-
-
-// For the login
-
-Route::view('login', 'auth.login');
-Route::post('authenticate', [LoginController::class, 'authenticate']);
-
-// for logout
-
-Route::get('logout', [LoginController::class, 'logout']);
+Route::get('view-records', [ProductInsertController::class,'product_list']);

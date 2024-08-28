@@ -1,0 +1,28 @@
+https://Teaminnovations.lk
+
+----------------------------
+            run
+----------------------------
+01. composer install
+02. php artisan migrate
+03. php artisan key:generate
+04. php artisan storage:link
+05. php artisan serve
+
+----------------------------
+            testing
+----------------------------
+01. w3c validator - https://validator.w3.org/
+02. browser testing
+03. responsive testing
+
+04. function testing
+05. vulnerability testing
+06. performance testing
+
+
+
+---------------------------------------------- Running the Product input ----------
+
+- To input product use the URI: /InProduct
+- TO view Records use: /view-records
