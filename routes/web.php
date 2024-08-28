@@ -28,3 +28,10 @@ Route::get('/InProduct', [ProductInsertController::class,'insert_form'])->name('
 Route::post('create', [ProductInsertController::class,'insert']);
 
 Route::get('view-records', [ProductInsertController::class,'product_list']);
+
+
+
+// to edit existing records
+
+Route::get('edit/{id}', [ProductInsertController::class,'edit']);
+Route::post('edit/{id}', [ProductInsertController::class,'update']);

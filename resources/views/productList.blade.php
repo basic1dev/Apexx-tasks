@@ -18,7 +18,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ $product->Product_Name }}</h5>
           <p class="card-text">{{ $product->Product_Details }}</p>
-          <a href="#" class="btn btn-primary">View product</a>
+          <a href="edit/{{ $product -> id}}" class="btn btn-primary">edit product</a>
         </div>
       </div>
     </div>
