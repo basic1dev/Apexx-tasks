@@ -42,3 +42,11 @@ Route::post('edit/{id}', [ProductInsertController::class,'update']);
 // To delete a query
 Route::get('delete/{id}', [ProductInsertController::class,'delete']);
 
+
+
+// ---------- Experimental -----------------
+
+// To additional form - expandable form.
+Route::get('/InProduct-2', [ProductInsertController::class,'insert_form_2']);
+
+Route::post('create-2', [ProductInsertController::class,'insert_2']);
